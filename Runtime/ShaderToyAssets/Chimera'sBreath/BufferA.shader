@@ -30,7 +30,7 @@ Shader "ShaderToy/Chimera's Breath/BufferA"
                 vec2 fragCoord = uv * iResolution.xy;
 
                 vec2 w = 1.0 / iResolution.xy;
-                vec4 lastMouse = texelFetch(iChannel0, vec2(0, 0), 0);
+                vec4 lastMouse = texelFetch(iChannel0, ivec2(0, 0), 0);
 
                 vec4 data = solveFluid(iChannel0, uv, w, iTime, iMouse.xyz, lastMouse.xyz);
 

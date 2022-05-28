@@ -29,9 +29,8 @@ Shader "ShaderToy/Chimera's Breath/Image"
                 vec2 uv = i.uv;
                 vec2 fragCoord = uv * iResolution.xy;
                 vec4 col = textureLod(iChannel0, uv, 0.);
-                // 原版这2句代码会导致Unity中鼠标点击没有加亮的效果，还不知道具体原因，所以这里注释掉
                 // if (fragCoord.y < 1. || fragCoord.y >= (iResolution.y - 1.))
-                    // col = vec4(0, 0, 0, 0);
+                //     col = vec4(0, 0, 0, 0);
                 return col;
             }
             ENDHLSL

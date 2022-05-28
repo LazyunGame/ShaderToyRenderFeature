@@ -31,7 +31,7 @@ namespace Lazyun.Runtime
 
             if (useScreenMouse)
             {
-                Vector4 p = Input.mousePosition;
+                Vector4 p = Input.mousePosition/new Vector2(Screen.width,Screen.height);
                 p.z = 3;
                 // Debug.Log(p);
                 shaderToyAsset.SetMousePosition(p);

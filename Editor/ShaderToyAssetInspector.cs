@@ -23,7 +23,7 @@ namespace Lazyun
         public override void OnInspectorGUI()
         {
             EditorGUILayout.PropertyField(mainMaterial);
-            var mainAssetRenderTextureInfo = serializedObject.FindProperty("renderTextureInfo");
+            var mainAssetRenderTextureInfo = serializedObject.FindProperty("defaultRenderTextureInfo");
 
             EditorGUILayout.PropertyField(mainAssetRenderTextureInfo);
 

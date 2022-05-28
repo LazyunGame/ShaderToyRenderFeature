@@ -22,7 +22,7 @@ namespace Lazyun.Runtime
     public class RenderTextureInfo
     {
 #if UNITY_EDITOR
-        [EnumIntValue(new int[] {0,32, 64, 128, 256, 512, 1024, 2048})]
+        [EnumIntValue(new int[] {0, 32, 64, 128, 256, 512, 1024, 2048})]
 #endif
         public int textureSize = 1024;
 
@@ -36,6 +36,7 @@ namespace Lazyun.Runtime
         {
             get { return (int) (textureSize * textureScale); }
         }
+
         public override bool Equals(object obj)
         {
             var b = obj as RenderTextureInfo;
@@ -268,7 +269,8 @@ namespace Lazyun.Runtime
 
         public void SetMousePosition(Vector4 mousePos)
         {
-            SetVector(ShaderToy.iMouse, mousePos);
+            SetVector(ShaderToy.iMouse,
+                new Vector4(RenderTexture.width * mousePos.x, RenderTexture.height * mousePos.y, mousePos.z, 1));
         }
 
         public void SetVector(int name, Vector4 v)

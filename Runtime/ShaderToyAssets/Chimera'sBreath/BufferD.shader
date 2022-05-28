@@ -67,7 +67,7 @@ Shader "ShaderToy/Chimera's Breath/BufferD"
                 vec4 col = textureLod(iChannel1, uv - dt * velo * w * 3., 0.); //advection
                 if (fragCoord.y < 1. && fragCoord.x < 1.)
                     col = vec4(0,0,0,0);
-                vec4 lastMouse = texelFetch(iChannel1, vec2(0, 0), 0).xyzw;
+                vec4 lastMouse = texelFetch(iChannel1, ivec2(0, 0), 0).xyzw;
 
                 if (iMouse.z > 1. && lastMouse.z > 1.)
                 {
