@@ -12,45 +12,66 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a8bc64fcad5462bac4334b2985be5c0, type: 3}
   m_Name: Chimera'sBreath
   m_EditorClassIdentifier: 
+  renderTextureInfo:
+    textureSize: 2048
+    format: 11
+    filterType: 1
+    wrapMode: 1
+    depthBuffer: 0
   bufferA:
     bufferName: 2
     inputBufferNames: 04000000
-    material: {fileID: 2100000, guid: 83dee1b621b7c4bf2a73eb8fbb1b884a, type: 2}
-    size: 0
-    format: 2
-    filterType: 1
-    wrapMode: 1
+    shader: {fileID: 4800000, guid: a2f34519d000442ceba114c2193dfd12, type: 3}
+    overrideDescriptor: 0
+    renderTextureInfo:
+      textureSize: 1024
+      format: 2
+      filterType: 1
+      wrapMode: 1
+      depthBuffer: 0
   bufferB:
     bufferName: 3
     inputBufferNames: 02000000
-    material: {fileID: 2100000, guid: 3e6740d08f2ac4aae81a772d74696efc, type: 2}
-    size: 0
-    format: 2
-    filterType: 1
-    wrapMode: 1
+    shader: {fileID: 4800000, guid: cd62eda759dc94b299d0aef46caa09d6, type: 3}
+    overrideDescriptor: 0
+    renderTextureInfo:
+      textureSize: 1024
+      format: 2
+      filterType: 1
+      wrapMode: 1
+      depthBuffer: 0
   bufferC:
     bufferName: 4
     inputBufferNames: 03000000
-    material: {fileID: 2100000, guid: fd5ef6f0cbf2d4cf292f078b766a9201, type: 2}
-    size: 0
-    format: 2
-    filterType: 1
-    wrapMode: 1
+    shader: {fileID: 4800000, guid: 1132d14793a084dbfad661a47f15efd7, type: 3}
+    overrideDescriptor: 0
+    renderTextureInfo:
+      textureSize: 1024
+      format: 2
+      filterType: 1
+      wrapMode: 1
+      depthBuffer: 0
   bufferD:
     bufferName: 5
     inputBufferNames: 0200000001000000
-    material: {fileID: 0}
-    size: 0
-    format: 2
-    filterType: 1
-    wrapMode: 1
+    shader: {fileID: 4800000, guid: aceb2d0200a564ac48b5482e5a8449e4, type: 3}
+    overrideDescriptor: 0
+    renderTextureInfo:
+      textureSize: 1024
+      format: 2
+      filterType: 1
+      wrapMode: 1
+      depthBuffer: 0
   image:
     bufferName: 1
     inputBufferNames: 05000000
-    material: {fileID: 2100000, guid: 7abfd4ab1c6284d3eb661542cf46aa2e, type: 2}
-    size: 0
-    format: 2
-    filterType: 1
-    wrapMode: 1
+    shader: {fileID: 4800000, guid: a884d8f2446974ef9a2146326dab9a43, type: 3}
+    overrideDescriptor: 0
+    renderTextureInfo:
+      textureSize: 1024
+      format: 2
+      filterType: 1
+      wrapMode: 1
+      depthBuffer: 0
   mainMaterial: {fileID: 2100000, guid: e6e1ca39064264df18d9566993d4bfc2, type: 2}
-  FrameCount: 0
+  FrameCount: 1581

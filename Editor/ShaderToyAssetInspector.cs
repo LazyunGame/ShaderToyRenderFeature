@@ -23,6 +23,9 @@ namespace Lazyun
         public override void OnInspectorGUI()
         {
             EditorGUILayout.PropertyField(mainMaterial);
+            var mainAssetRenderTextureInfo = serializedObject.FindProperty("renderTextureInfo");
+
+            EditorGUILayout.PropertyField(mainAssetRenderTextureInfo);
 
             DrawBufferGUI(bufferA, ChannelEnum.bufferA);
             EditorGUILayout.Space();
@@ -71,17 +74,27 @@ namespace Lazyun
                 var inputBufferNamesProperty = buffer.FindPropertyRelative("inputBufferNames");
                 EditorGUILayout.PropertyField(inputBufferNamesProperty);
 
-                var material = buffer.FindPropertyRelative("material");
-                EditorGUILayout.PropertyField(material);
+                var shader = buffer.FindPropertyRelative("shader");
+                EditorGUILayout.PropertyField(shader);
+                
+                var overrideDescriptor = buffer.FindPropertyRelative("overrideDescriptor");
+                EditorGUILayout.PropertyField(overrideDescriptor);
 
-                var formatProperty = buffer.FindPropertyRelative("format");
-                EditorGUILayout.PropertyField(formatProperty);
-                var sizeProperty = buffer.FindPropertyRelative("size");
-                EditorGUILayout.PropertyField(sizeProperty);
-                var filterTypeProperty = buffer.FindPropertyRelative("filterType");
-                EditorGUILayout.PropertyField(filterTypeProperty);
-                var wrapModeProperty = buffer.FindPropertyRelative("wrapMode");
-                EditorGUILayout.PropertyField(wrapModeProperty);
+                if (overrideDescriptor.boolValue)
+                {
+                    var renderTextureInfo = buffer.FindPropertyRelative("renderTextureInfo");
+                    
+                    var formatProperty = renderTextureInfo.FindPropertyRelative("format");
+                    EditorGUILayout.PropertyField(formatProperty);
+                    var sizeProperty = renderTextureInfo.FindPropertyRelative("textureSize");
+                    EditorGUILayout.PropertyField(sizeProperty);
+                    var filterTypeProperty = renderTextureInfo.FindPropertyRelative("filterType");
+                    EditorGUILayout.PropertyField(filterTypeProperty);
+                    var wrapModeProperty = renderTextureInfo.FindPropertyRelative("wrapMode");
+                    EditorGUILayout.PropertyField(wrapModeProperty);
+                    var depthBuffer = renderTextureInfo.FindPropertyRelative("depthBuffer");
+                    EditorGUILayout.PropertyField(depthBuffer);
+                }
             }
 
             EditorGUILayout.EndHorizontal();

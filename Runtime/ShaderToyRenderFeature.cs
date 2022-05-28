@@ -8,9 +8,17 @@ using UnityEngine.Rendering.Universal;
 public class ShaderToyRenderFeature : ScriptableRendererFeature
 {
     public ShaderToyAsset shaderToyAsset;
-    public TextureSizeMode size;
     public bool drawToScreen;
+    public bool useScreenMouse;
+
+    [Range(0.1f, 1)] public float textureScale;
+    
+    
+    public string finalTextureName = "_ShaderToyFinalTexture";
+
+
     private ShaderToyPass _pass;
+
 
     public override void Create()
     {
@@ -24,7 +32,7 @@ public class ShaderToyRenderFeature : ScriptableRendererFeature
     {
         if (_pass != null)
         {
-            _pass.Setup(shaderToyAsset, drawToScreen,renderer.cameraColorTarget);
+            _pass.Setup(shaderToyAsset, drawToScreen, renderer.cameraColorTarget, finalTextureName,textureScale,useScreenMouse);
 
             renderer.EnqueuePass(_pass);
         }

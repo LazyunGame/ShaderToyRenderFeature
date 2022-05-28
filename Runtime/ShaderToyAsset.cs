@@ -6,6 +6,8 @@ namespace Lazyun.Runtime
     [CreateAssetMenu(fileName = "ShaderToyAsset.asset", menuName = "ShaderToy Asset", order = 0)]
     public class ShaderToyAsset : ScriptableObject
     {
+        public RenderTextureInfo defaultRenderTextureInfo;
+
         public ShaderToyChannel bufferA;
         public ShaderToyChannel bufferB;
         public ShaderToyChannel bufferC;
@@ -17,31 +19,36 @@ namespace Lazyun.Runtime
 
         private bool _isInit;
 
+        public ShaderToyChannel[] Channels
+        {
+            get { return new[] {bufferA, bufferB, bufferC, bufferD, image}; }
+        }
+
         public void Init()
         {
             if (bufferA.bufferName != ChannelEnum.none)
             {
-                bufferA.Connect(new ShaderToyChannel[] {bufferA, bufferB, bufferC, bufferD, image});
+                bufferA.Connect(this);
             }
 
             if (bufferB.bufferName != ChannelEnum.none)
             {
-                bufferB.Connect(new ShaderToyChannel[] {bufferA, bufferB, bufferC, bufferD, image});
+                bufferB.Connect(this);
             }
 
             if (bufferC.bufferName != ChannelEnum.none)
             {
-                bufferC.Connect(new ShaderToyChannel[] {bufferA, bufferB, bufferC, bufferD, image});
+                bufferC.Connect(this);
             }
 
             if (bufferD.bufferName != ChannelEnum.none)
             {
-                bufferD.Connect(new ShaderToyChannel[] {bufferA, bufferB, bufferC, bufferD, image});
+                bufferD.Connect(this);
             }
 
 
             if (image.bufferName != ChannelEnum.none)
-                image.Connect(new ShaderToyChannel[] {bufferA, bufferB, bufferC, bufferD, image});
+                image.Connect(this);
 
             if (image.bufferName != ChannelEnum.none && !mainMaterial)
             {
@@ -57,12 +64,14 @@ namespace Lazyun.Runtime
 
         [HideInInspector] public int FrameCount;
 
-        public void Render(ScriptableRenderContext context)
+        public void Render(ScriptableRenderContext context,float textureScale)
         {
-            _isInit = !((bufferA.bufferName != ChannelEnum.none && !bufferA.isConnected) ||
-                       (bufferB.bufferName != ChannelEnum.none && !bufferB.isConnected) ||
-                       (bufferC.bufferName != ChannelEnum.none && !bufferC.isConnected) ||
-                       (bufferD.bufferName != ChannelEnum.none && !bufferD.isConnected));
+            defaultRenderTextureInfo.textureScale = textureScale;
+            _isInit = bufferA.IsReady &&
+                      bufferB.IsReady &&
+                      bufferC.IsReady &&
+                      bufferD.IsReady &&
+                      image.IsReady;
             if (!_isInit)
             {
                 Init();
@@ -147,7 +156,7 @@ namespace Lazyun.Runtime
 
         public void SetMousePosition(Vector4 mousePos)
         {
-            Debug.Log(mousePos);
+            // Debug.Log(mousePos);
             if (bufferA.isConnected)
             {
                 bufferA.SetMousePosition(mousePos);
