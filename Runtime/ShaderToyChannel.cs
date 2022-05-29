@@ -229,11 +229,7 @@ namespace Lazyun.Runtime
                 }
             }
 
-            // 设置常用参数
-            Material.SetFloat("iScreenRatio", RenderTexture.height * 1f / RenderTexture.width);
-            Material.SetVector("iScreenParams",
-                new Vector4(RenderTexture.width, RenderTexture.height, RenderTexture.width * 1f / RenderTexture.height,
-                    1));
+           
             isConnected = true;
             _commandBuffer = new CommandBuffer();
             _commandBuffer.name = bufferName.ToString();
@@ -252,6 +248,10 @@ namespace Lazyun.Runtime
                 return;
             }
 
+            // 设置常用参数
+            Material.SetFloat("iScreenRatio", RenderTexture.height * 1f / RenderTexture.width);
+            Material.SetVector("iScreenParams", new Vector4(RenderTexture.width, RenderTexture.height, 
+                RenderTexture.width * 1f / RenderTexture.height, 1));
             // Debug.LogError(material.GetTexture("iChannel0").name);
             _commandBuffer.Clear();
             _commandBuffer.SetRenderTarget(RenderTexture);

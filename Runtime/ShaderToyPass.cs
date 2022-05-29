@@ -8,10 +8,9 @@ namespace Lazyun.Runtime
     {
         const string m_ProfilerTag = "ShaderToyPass";
 
-        private bool drawToScreen, useScreenMouse;
+        private bool useScreenMouse;
         private ShaderToyAsset shaderToyAsset;
 
-        private RenderTargetIdentifier cameraColorTarget;
         private string finalTextureName;
         private float textureScale;
 
@@ -31,8 +30,9 @@ namespace Lazyun.Runtime
 
             if (useScreenMouse)
             {
-                Vector4 p = Input.mousePosition/new Vector2(Screen.width,Screen.height);
-                p.z = 3;
+                Vector4 p = Input.mousePosition / new Vector2(Screen.width, Screen.height);
+                if (Input.GetMouseButtonDown(0))
+                    p.z = 3;
                 // Debug.Log(p);
                 shaderToyAsset.SetMousePosition(p);
             }
@@ -40,34 +40,15 @@ namespace Lazyun.Runtime
             shaderToyAsset.Render(context, textureScale);
 
 
-            if (drawToScreen)
-            {
-                CommandBuffer cmd = CommandBufferPool.Get(m_ProfilerTag);
-                cmd.SetRenderTarget(cameraColorTarget);
-                cmd.ClearRenderTarget(true, true, Color.clear);
-                Blit(cmd, shaderToyAsset.image.RenderTexture, cameraColorTarget);
-                context.ExecuteCommandBuffer(cmd);
-
-
-                cmd.Clear();
-                context.ExecuteCommandBuffer(cmd);
-                CommandBufferPool.Release(cmd);
-            }
-            else
-            {
-                if (!string.IsNullOrEmpty(finalTextureName))
-                    Shader.SetGlobalTexture(finalTextureName, shaderToyAsset.image.RenderTexture);
-            }
+            if (!string.IsNullOrEmpty(finalTextureName))
+                Shader.SetGlobalTexture(finalTextureName, shaderToyAsset.image.RenderTexture);
         }
 
-        public void Setup(ShaderToyAsset asset, bool drawToScreen,
-            RenderTargetIdentifier rendererCameraColorTarget, string renderTargetName, float texScale,
+        public void Setup(ShaderToyAsset asset, string renderTargetName, float texScale,
             bool useScreenMousePos)
         {
             shaderToyAsset = asset;
-            this.drawToScreen = drawToScreen;
-            renderPassEvent = RenderPassEvent.AfterRenderingSkybox;
-            cameraColorTarget = rendererCameraColorTarget;
+            renderPassEvent = RenderPassEvent.BeforeRendering;
             finalTextureName = renderTargetName;
             textureScale = texScale;
             useScreenMouse = useScreenMousePos;

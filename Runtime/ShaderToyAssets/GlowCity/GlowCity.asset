@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5a8bc64fcad5462bac4334b2985be5c0, type: 3}
-  m_Name: Chimera'sBreath
+  m_Name: GlowCity
   m_EditorClassIdentifier: 
   defaultRenderTextureInfo:
-    textureSize: 1024
-    format: 11
+    textureSize: 2048
+    format: 2
     filterType: 1
     wrapMode: 1
     depthBuffer: 0
-    textureScale: 1
+    textureScale: 0.556
   bufferA:
-    bufferName: 2
-    inputBufferNames: 04000000
-    shader: {fileID: 4800000, guid: a2f34519d000442ceba114c2193dfd12, type: 3}
+    bufferName: 0
+    inputBufferNames: 
+    shader: {fileID: 0}
     overrideDescriptor: 0
     renderTextureInfo:
       textureSize: 1024
@@ -30,11 +30,11 @@ MonoBehaviour:
       filterType: 1
       wrapMode: 1
       depthBuffer: 0
-      textureScale: 0
+      textureScale: 1
   bufferB:
-    bufferName: 3
-    inputBufferNames: 02000000
-    shader: {fileID: 4800000, guid: cd62eda759dc94b299d0aef46caa09d6, type: 3}
+    bufferName: 0
+    inputBufferNames: 
+    shader: {fileID: 0}
     overrideDescriptor: 0
     renderTextureInfo:
       textureSize: 1024
@@ -42,11 +42,11 @@ MonoBehaviour:
       filterType: 1
       wrapMode: 1
       depthBuffer: 0
-      textureScale: 0
+      textureScale: 1
   bufferC:
-    bufferName: 4
-    inputBufferNames: 03000000
-    shader: {fileID: 4800000, guid: 1132d14793a084dbfad661a47f15efd7, type: 3}
+    bufferName: 0
+    inputBufferNames: 
+    shader: {fileID: 0}
     overrideDescriptor: 0
     renderTextureInfo:
       textureSize: 1024
@@ -54,11 +54,11 @@ MonoBehaviour:
       filterType: 1
       wrapMode: 1
       depthBuffer: 0
-      textureScale: 0
+      textureScale: 1
   bufferD:
-    bufferName: 5
-    inputBufferNames: 0200000001000000
-    shader: {fileID: 4800000, guid: aceb2d0200a564ac48b5482e5a8449e4, type: 3}
+    bufferName: 0
+    inputBufferNames: 
+    shader: {fileID: 0}
     overrideDescriptor: 0
     renderTextureInfo:
       textureSize: 1024
@@ -66,11 +66,11 @@ MonoBehaviour:
       filterType: 1
       wrapMode: 1
       depthBuffer: 0
-      textureScale: 0
+      textureScale: 1
   image:
     bufferName: 1
-    inputBufferNames: 05000000
-    shader: {fileID: 4800000, guid: a884d8f2446974ef9a2146326dab9a43, type: 3}
+    inputBufferNames: 
+    shader: {fileID: 4800000, guid: 3e5973213ca8c45ebaa7dda610a294dc, type: 3}
     overrideDescriptor: 0
     renderTextureInfo:
       textureSize: 1024
@@ -78,6 +78,6 @@ MonoBehaviour:
       filterType: 1
       wrapMode: 1
       depthBuffer: 0
-      textureScale: 0
-  mainMaterial: {fileID: 2100000, guid: e6e1ca39064264df18d9566993d4bfc2, type: 2}
-  FrameCount: 1639
+      textureScale: 1
+  mainMaterial: {fileID: 0}
+  FrameCount: 28249

@@ -11,30 +11,42 @@ public class ShaderToyRenderFeature : ScriptableRendererFeature
     public bool drawToScreen;
     public bool useScreenMouse;
 
-    [Range(0.1f, 1)] public float textureScale;
-    
-    
+    [Range(0.1f, 1)] public float textureScale = 1;
+
+
     public string finalTextureName = "_ShaderToyFinalTexture";
 
 
-    private ShaderToyPass _pass;
+    private ShaderToyPass _renderPass;
+    private DrawToScreenPass _drawToScreenPass;
 
 
     public override void Create()
     {
-        if (_pass == null)
+        if (_renderPass == null)
         {
-            _pass = new ShaderToyPass();
+            _renderPass = new ShaderToyPass();
+        }
+
+        if (drawToScreen && _drawToScreenPass == null)
+        {
+            _drawToScreenPass = new DrawToScreenPass();
         }
     }
 
     public override void AddRenderPasses(ScriptableRenderer renderer, ref RenderingData renderingData)
     {
-        if (_pass != null)
+        if (_renderPass != null)
         {
-            _pass.Setup(shaderToyAsset, drawToScreen, renderer.cameraColorTarget, finalTextureName,textureScale,useScreenMouse);
+            _renderPass.Setup(shaderToyAsset, finalTextureName, textureScale, useScreenMouse);
 
-            renderer.EnqueuePass(_pass);
+            renderer.EnqueuePass(_renderPass);
+        }
+
+        if (_drawToScreenPass != null)
+        {
+            _drawToScreenPass.Setup(shaderToyAsset, drawToScreen, renderer.cameraColorTarget);
+            renderer.EnqueuePass(_drawToScreenPass);
         }
     }
 }

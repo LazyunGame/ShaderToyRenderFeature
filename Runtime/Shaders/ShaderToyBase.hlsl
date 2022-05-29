@@ -27,9 +27,9 @@ v2f vert(appdata v)
 
 CBUFFER_START(UnityPerMaterial)
     float4 iChannel0_ST;
-float4 iChannel1_ST;
-float4 iChannel2_ST;
-float4 iChannel3_ST;
+    float4 iChannel1_ST;
+    float4 iChannel2_ST;
+    float4 iChannel3_ST;
 CBUFFER_END
 
 sampler2D iChannel0;
@@ -77,7 +77,7 @@ float iFrame;
 #define dFdy ddy
 vec4 texelFetch(sampler2D samp,vec2 p, int lod)
 {
-    return tex2Dlod(samp, float4(p/iResolution.xy, 0, lod));
+    return tex2Dlod(samp, float4(p / iResolution.xy, 0, lod));
 }
 
 vec4 textureLod(sampler2D samp,vec2 p, float lod)
@@ -180,5 +180,3 @@ float4 hsv2rgb(float3 c, float a)
 {
     return float4(hsv2rgb(c), a);
 }
-
-

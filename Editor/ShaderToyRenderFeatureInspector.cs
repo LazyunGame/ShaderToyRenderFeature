@@ -25,8 +25,11 @@ namespace Lazyun
             EditorGUILayout.PropertyField(finalTextureName);
 
             EditorGUILayout.PropertyField(mainAsset);
-            var e = Editor.CreateEditor(mainAsset.objectReferenceValue);
-            e.DrawDefaultInspector();
+            if (mainAsset.objectReferenceValue)
+            {
+                var e = Editor.CreateEditor(mainAsset.objectReferenceValue);
+                e.DrawDefaultInspector();
+            }
         }
     }
 }
