@@ -1,0 +1,16 @@
+{
+    "name": "ShaderToyRenderFeature.Editor",
+    "rootNamespace": "",
+    "references": [
+        "ShaderToyRenderFeature"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
